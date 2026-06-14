@@ -1,0 +1,272 @@
+/* style.css - FutsalKu */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4ff;
+    color: #333;
+}
+
+/* ====== NAVBAR ====== */
+nav {
+    background: linear-gradient(to right, #4f46e5, #0ea5e9);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    color: white;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 8px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.nav-links li a:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.nav-links li a.active {
+    background-color: white;
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+/* ====== HERO ====== */
+.hero {
+    background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+    color: white;
+    padding: 60px 24px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: 1.05rem;
+    color: #dbeafe;
+    margin-bottom: 24px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #f97316;
+    color: white;
+    padding: 10px 26px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.btn:hover {
+    background-color: #ea580c;
+}
+
+/* ====== SECTION ====== */
+.section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 36px 20px;
+}
+
+h2 {
+    font-size: 1.4rem;
+    color: #4f46e5;
+    margin-top: 36px;
+    margin-bottom: 6px;
+    border-left: 5px solid #f97316;
+    padding-left: 10px;
+}
+
+/* ====== INFO BOX ====== */
+.info-box {
+    background-color: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #444;
+}
+
+.info-box strong {
+    color: #d97706;
+}
+
+/* ====== CARDS ====== */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 16px 0;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 18px;
+    flex: 1 1 200px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border-top: 4px solid #ccc;
+}
+
+/* warna card beda-beda biar variatif */
+.card:nth-child(1) { border-top-color: #f97316; }
+.card:nth-child(2) { border-top-color: #8b5cf6; }
+.card:nth-child(3) { border-top-color: #10b981; }
+.card:nth-child(4) { border-top-color: #0ea5e9; }
+
+.card .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+    color: #222;
+}
+
+.card p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* ====== TEKNIK LIST ====== */
+.teknik-list {
+    margin: 14px 0;
+}
+
+.teknik-item {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* nomor teknik warna berganti */
+.teknik-number {
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: #4f46e5;
+}
+
+.teknik-item:nth-child(2) .teknik-number { background-color: #10b981; }
+.teknik-item:nth-child(3) .teknik-number { background-color: #f97316; }
+.teknik-item:nth-child(4) .teknik-number { background-color: #8b5cf6; }
+.teknik-item:nth-child(5) .teknik-number { background-color: #0ea5e9; }
+.teknik-item:nth-child(6) .teknik-number { background-color: #ec4899; }
+
+.teknik-content h3 {
+    margin: 0 0 5px 0;
+    font-size: 0.98rem;
+    color: #1e293b;
+}
+
+.teknik-content p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.55;
+}
+
+/* ====== TABEL ====== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+th, td {
+    border: 1px solid #e2e8f0;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #4f46e5;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9ff;
+}
+
+/* ====== BADGE ====== */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: bold;
+}
+
+.badge-menang { background-color: #d1fae5; color: #065f46; }
+.badge-seri   { background-color: #fef9c3; color: #78350f; }
+.badge-kalah  { background-color: #fee2e2; color: #991b1b; }
+
+/* ====== HIGHLIGHT ====== */
+.highlight {
+    background-color: #fef08a;
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: #713f12;
+}
+
+/* ====== FOOTER ====== */
+footer {
+    background: linear-gradient(to right, #4f46e5, #0ea5e9);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    margin-top: 50px;
+}
