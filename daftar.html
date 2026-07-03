@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FutsalKu - Daftar Anggota</title>
+  <title>FutsalKu - Gabung Tim</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,32 +14,32 @@
       <li><a href="index.html">Beranda</a></li>
       <li><a href="teknik.html">Teknik Dasar</a></li>
       <li><a href="jadwal.html">Jadwal &amp; Hasil</a></li>
-      <li><a href="daftar.html" class="active">Daftar Anggota</a></li>
+      <li><a href="daftar.html" class="active">Gabung Tim</a></li>
     </ul>
   </nav>
 
   <div class="section">
 
-    <h2>Daftar Jadi Anggota Tim</h2>
+    <h2>Mau Ikut Main? Daftar Dulu</h2>
     <p style="color: #666; font-size: 0.9rem; margin-top: -8px; margin-bottom: 14px;">
-      Mau gabung tim futsal kami? Isi form di bawah, nanti kami hubungi.
+      Isi form ini, nanti kita reach out. Ga ribet kok.
     </p>
 
     <div class="info-box">
-      Kami lagi buka rekrutmen untuk <mark class="highlight">musim baru</mark>. 
-      Semua posisi terbuka — yang penting mau belajar dan <strong>komitmen latihan rutin</strong>.
+      Lagi buka slot buat <mark class="highlight">musim baru</mark> nih.
+      Semua posisi boleh, skill belum tinggi juga gapapa — yang penting <strong>rajin latihan dan ga sering izin</strong>.
     </div>
 
     <!-- FORM PENDAFTARAN -->
     <form id="form-daftar" class="form-daftar" novalidate>
 
       <div class="form-group">
-        <label for="nama">Nama Lengkap <span class="required-mark">*</span></label>
+        <label for="nama">Nama kamu <span class="required-mark">*</span></label>
         <input
           type="text"
           id="nama"
           name="nama"
-          placeholder="Contoh: Budi Santoso"
+          placeholder="nama lengkap, bukan nickname ya"
           minlength="3"
           maxlength="60"
         />
@@ -47,51 +47,51 @@
       </div>
 
       <div class="form-group">
-        <label for="noHp">Nomor HP <span class="required-mark">*</span></label>
+        <label for="noHp">No. HP / WA <span class="required-mark">*</span></label>
         <input
           type="tel"
           id="noHp"
           name="noHp"
-          placeholder="Contoh: 08123456789"
+          placeholder="08xxxxxxxxxx"
           pattern="^08[0-9]{8,11}$"
         />
         <span class="error-msg" id="error-noHp"></span>
       </div>
 
       <div class="form-group">
-        <label for="posisi">Posisi yang Diminati <span class="required-mark">*</span></label>
+        <label for="posisi">Posisi yang mau dicoba <span class="required-mark">*</span></label>
         <select id="posisi" name="posisi">
-          <option value="">-- Pilih posisi --</option>
+          <option value="">pilih posisi...</option>
           <option value="Kiper (GK)">Kiper (GK)</option>
           <option value="Anchor">Anchor</option>
           <option value="Flank Kiri">Flank Kiri</option>
           <option value="Flank Kanan">Flank Kanan</option>
           <option value="Pivot">Pivot</option>
-          <option value="Fleksibel">Fleksibel (bisa semua)</option>
+          <option value="Fleksibel">Fleksibel / belum tau</option>
         </select>
         <span class="error-msg" id="error-posisi"></span>
       </div>
 
       <div class="form-group">
-        <label for="pengalaman">Pengalaman Bermain <span class="required-mark">*</span></label>
+        <label for="pengalaman">Seberapa sering main futsal? <span class="required-mark">*</span></label>
         <select id="pengalaman" name="pengalaman">
-          <option value="">-- Pilih pengalaman --</option>
-          <option value="Pemula (belum pernah)">Pemula (belum pernah main)</option>
-          <option value="Casual (main santai)">Casual (main santai)</option>
-          <option value="1-2 tahun">1–2 tahun</option>
-          <option value="3-5 tahun">3–5 tahun</option>
-          <option value="Lebih dari 5 tahun">Lebih dari 5 tahun</option>
+          <option value="">pilih salah satu...</option>
+          <option value="Pemula (belum pernah)">Baru mau nyoba, belum pernah sama sekali</option>
+          <option value="Casual (main santai)">Pernah main, tapi casual aja</option>
+          <option value="1-2 tahun">Udah main 1–2 tahun</option>
+          <option value="3-5 tahun">3–5 tahun, lumayan lah</option>
+          <option value="Lebih dari 5 tahun">Lebih dari 5 tahun, udah veteran</option>
         </select>
         <span class="error-msg" id="error-pengalaman"></span>
       </div>
 
       <div class="form-group">
-        <label for="motivasi">Motivasi / Catatan Tambahan <span class="required-mark">*</span></label>
+        <label for="motivasi">Kenapa mau gabung? <span class="required-mark">*</span></label>
         <textarea
           id="motivasi"
           name="motivasi"
           rows="4"
-          placeholder="Ceritain kenapa mau gabung, atau hal lain yang perlu kami tahu..."
+          placeholder="santai aja, cerita sedikit juga gapapa. misal: pengen olahraga, bosen di kos, etc."
           minlength="10"
           maxlength="400"
         ></textarea>
@@ -99,28 +99,28 @@
       </div>
 
       <div class="form-actions">
-        <button type="submit" id="btn-submit" class="btn-form">Kirim Pendaftaran 🚀</button>
-        <button type="button" id="btn-reset" class="btn-form btn-form-secondary">Reset Form</button>
+        <button type="submit" id="btn-submit" class="btn-form">Kirim aja 🚀</button>
+        <button type="button" id="btn-reset" class="btn-form btn-form-secondary">Ulangi</button>
       </div>
 
     </form>
 
     <!-- PESAN SUKSES -->
     <div id="sukses-msg" class="sukses-box" style="display:none;">
-      ✅ <strong>Pendaftaran berhasil disimpan!</strong><br>
-      Kami akan menghubungi kamu secepatnya. Pantau terus info latihan di halaman
-      <a href="jadwal.html">Jadwal &amp; Hasil</a>.
+      ✅ <strong>Oke, udah masuk!</strong><br>
+      Ntar kami hubungi via WA. Sambil nunggu, cek jadwal latihan di
+      <a href="jadwal.html">Jadwal &amp; Hasil</a> biar tau kita latihan kapan aja.
     </div>
 
     <!-- TAMPILAN DATA TERSIMPAN -->
     <div id="data-tersimpan-wrapper" style="display:none;">
-      <h2>Data Pendaftaran Tersimpan</h2>
+      <h2>Data yang udah kamu kirim</h2>
       <p style="color:#666; font-size:0.9rem; margin-top:-8px; margin-bottom:12px;">
-        Data ini diambil dari localStorage browser kamu.
+        Ini tersimpan di browser kamu, jadi ga hilang walau di-refresh.
       </p>
       <div class="info-box" id="data-tersimpan-isi"></div>
       <button type="button" id="btn-hapus" class="btn-form btn-form-danger" style="margin-top:10px;">
-        🗑️ Hapus Data
+        🗑️ Hapus &amp; mulai ulang
       </button>
     </div>
 
@@ -131,61 +131,50 @@
   </footer>
 
   <script>
-    // =============================================
-    // Kunci localStorage
-    // =============================================
     const STORAGE_KEY = 'futsalku_daftar';
 
-    // Referensi elemen
-    const form         = document.getElementById('form-daftar');
-    const suksesMsg    = document.getElementById('sukses-msg');
-    const dataWrapper  = document.getElementById('data-tersimpan-wrapper');
-    const dataIsi      = document.getElementById('data-tersimpan-isi');
-    const btnReset     = document.getElementById('btn-reset');
-    const btnHapus     = document.getElementById('btn-hapus');
+    const form        = document.getElementById('form-daftar');
+    const suksesMsg   = document.getElementById('sukses-msg');
+    const dataWrapper = document.getElementById('data-tersimpan-wrapper');
+    const dataIsi     = document.getElementById('data-tersimpan-isi');
+    const btnReset    = document.getElementById('btn-reset');
+    const btnHapus    = document.getElementById('btn-hapus');
 
-    // =============================================
-    // Isi ulang form dari localStorage saat halaman dibuka
-    // =============================================
+    // Muat data dari localStorage waktu halaman dibuka
     function muatDataTersimpan() {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
 
       const data = JSON.parse(raw);
 
-      // Isi kembali nilai di form
-      document.getElementById('nama').value        = data.nama        || '';
-      document.getElementById('noHp').value        = data.noHp        || '';
-      document.getElementById('posisi').value      = data.posisi      || '';
-      document.getElementById('pengalaman').value  = data.pengalaman  || '';
-      document.getElementById('motivasi').value    = data.motivasi    || '';
+      document.getElementById('nama').value       = data.nama       || '';
+      document.getElementById('noHp').value       = data.noHp       || '';
+      document.getElementById('posisi').value     = data.posisi     || '';
+      document.getElementById('pengalaman').value = data.pengalaman || '';
+      document.getElementById('motivasi').value   = data.motivasi   || '';
 
-      // Tampilkan ringkasan data di bawah form
       tampilkanDataTersimpan(data);
     }
 
     function tampilkanDataTersimpan(data) {
       dataWrapper.style.display = 'block';
       dataIsi.innerHTML =
-        '<strong>Nama:</strong> '        + data.nama       + '<br>' +
-        '<strong>No. HP:</strong> '      + data.noHp       + '<br>' +
-        '<strong>Posisi:</strong> '      + data.posisi     + '<br>' +
-        '<strong>Pengalaman:</strong> '  + data.pengalaman + '<br>' +
-        '<strong>Motivasi:</strong> '    + data.motivasi;
+        '<strong>Nama:</strong> '       + data.nama       + '<br>' +
+        '<strong>No. HP:</strong> '     + data.noHp       + '<br>' +
+        '<strong>Posisi:</strong> '     + data.posisi     + '<br>' +
+        '<strong>Pengalaman:</strong> ' + data.pengalaman + '<br>' +
+        '<strong>Motivasi:</strong> '   + data.motivasi;
     }
 
-    // =============================================
-    // Validasi manual JavaScript
-    // =============================================
     function clearErrors() {
       document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
       document.querySelectorAll('.form-group input, .form-group select, .form-group textarea')
         .forEach(el => el.classList.remove('input-error'));
     }
 
-    function setError(fieldId, pesan) {
-      document.getElementById('error-' + fieldId).textContent = pesan;
-      document.getElementById(fieldId).classList.add('input-error');
+    function setError(id, pesan) {
+      document.getElementById('error-' + id).textContent = pesan;
+      document.getElementById(id).classList.add('input-error');
     }
 
     function validasiForm() {
@@ -199,40 +188,35 @@
       const motivasi   = document.getElementById('motivasi').value.trim();
 
       if (nama.length < 3) {
-        setError('nama', 'Nama minimal 3 karakter.');
+        setError('nama', 'Nama kurang panjang, minimal 3 karakter ya.');
         valid = false;
       }
 
-      // Validasi nomor HP: harus diawali 08 dan panjang 10-13 digit
       if (!/^08[0-9]{8,11}$/.test(noHp)) {
-        setError('noHp', 'Nomor HP tidak valid. Contoh: 08123456789');
+        setError('noHp', 'Format nomor HP salah. Harus diawali 08, contoh: 08123456789');
         valid = false;
       }
 
       if (!posisi) {
-        setError('posisi', 'Pilih posisi yang kamu minati.');
+        setError('posisi', 'Pilih posisi dulu.');
         valid = false;
       }
 
       if (!pengalaman) {
-        setError('pengalaman', 'Pilih tingkat pengalamanmu.');
+        setError('pengalaman', 'Pilih salah satu dulu.');
         valid = false;
       }
 
       if (motivasi.length < 10) {
-        setError('motivasi', 'Isi motivasi minimal 10 karakter.');
+        setError('motivasi', 'Isi dikit dong, minimal 10 karakter.');
         valid = false;
       }
 
       return valid;
     }
 
-    // =============================================
-    // Submit form
-    // =============================================
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-
       if (!validasiForm()) return;
 
       const data = {
@@ -244,30 +228,20 @@
         waktu:      new Date().toLocaleString('id-ID')
       };
 
-      // Simpan ke localStorage
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 
-      // Tampilkan pesan sukses
       suksesMsg.style.display = 'block';
       suksesMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      // Update tampilan data tersimpan
       tampilkanDataTersimpan(data);
     });
 
-    // =============================================
-    // Reset form
-    // =============================================
-    btnReset.addEventListener('click', function () {
+    btnReset.addEventListener('click', function() {
       clearErrors();
       form.reset();
       suksesMsg.style.display = 'none';
     });
 
-    // =============================================
-    // Hapus data dari localStorage
-    // =============================================
-    btnHapus.addEventListener('click', function () {
+    btnHapus.addEventListener('click', function() {
       localStorage.removeItem(STORAGE_KEY);
       dataWrapper.style.display = 'none';
       suksesMsg.style.display = 'none';
@@ -275,9 +249,6 @@
       clearErrors();
     });
 
-    // =============================================
-    // Jalankan saat halaman pertama kali dibuka
-    // =============================================
     muatDataTersimpan();
   </script>
 
