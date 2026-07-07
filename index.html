@@ -3,117 +3,582 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FutsalKu - Beranda</title>
+  <title>VOLTA — Komunitas Futsal Modern</title>
+  <meta name="description" content="VOLTA — komunitas futsal penuh energi. Revolusi cara main futsal: teknik tajam, strategi kuat, satu tim satu tujuan.">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    nav .nav-links a.active { color: var(--cyan); }
+    .section-anchor {
+      display: block;
+      height: 80px;
+      margin-top: -80px;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--border2);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.3);
+      border-color: var(--cyan);
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(10,12,20,0.9), transparent);
+      padding: 30px 20px 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover .gallery-overlay { transform: translateY(0); }
+    .gallery-overlay h3 { margin: 0 0 4px; color: var(--white); font-size: 1.1rem; }
+    .gallery-overlay p  { margin: 0; color: var(--cyan-light); font-size: 0.85rem; }
+    .squad-section { margin-top: 48px; }
+    .squad-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .squad-title span {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+    }
+    .player-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .player-card {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s;
+    }
+    .player-card:hover {
+      background: var(--surface2);
+      border-color: rgba(6, 182, 212, 0.4);
+      transform: translateY(-4px);
+    }
+    .player-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--blue-light);
+      width: 32px;
+      text-align: center;
+    }
+    .player-info h4 { margin: 0 0 4px; font-size: 1rem; color: var(--white); }
+    .player-info p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      padding: 6px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text2);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+    }
+    .tab-btn:not(.active):hover { color: var(--white); background: var(--surface2); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 60px 0 0;
+    }
+  </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-brand">⚽ FutsalKu</a>
+  <nav id="main-nav">
+    <a href="#beranda" class="nav-brand">VOLTA FC</a>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Beranda</a></li>
-      <li><a href="teknik.html">Teknik Dasar</a></li>
-      <li><a href="jadwal.html">Jadwal & Hasil</a></li>
-      <li><a href="daftar.html">Daftar Anggota</a></li>
+      <li><a href="#beranda" class="active">Beranda</a></li>
+      <li><a href="#teknik">Teknik Dasar</a></li>
+      <li><a href="#jadwal">Jadwal &amp; Hasil</a></li>
+      <li><a href="#tim">Tim &amp; Galeri</a></li>
+      <li><a href="#gabung">Gabung Tim</a></li>
     </ul>
   </nav>
 
+  <!-- BERANDA -->
+  <span class="section-anchor" id="beranda"></span>
   <div class="hero">
-    <h1>Hobi Saya: Futsal ⚽</h1>
-    <p>Olahraga yang seru, butuh kerja sama tim, dan bikin nagih. Yuk kenalan sama futsal!</p>
-    <a href="teknik.html" class="btn">Lihat Teknik Dasar</a>
+    <div class="hero-inner">
+      <div class="hero-badge">VOLTA FUTSAL CLUB &bull; DEDIKASI &middot; STRATEGI &middot; KEBERSAMAAN</div>
+      <h1>Hobi Saya:<br><span class="gradient-text">Futsal</span></h1>
+      <p>Olahraga yang seru, butuh kerja sama tim, dan bikin nagih. Yuk kenalan sama futsal &mdash; dari teknik dasar sampai jadwal tanding!</p>
+      <div class="hero-actions">
+        <a href="#teknik" class="btn">Lihat Teknik Dasar &rarr;</a>
+        <a href="#gabung" class="btn-ghost">Gabung Tim</a>
+      </div>
+    </div>
   </div>
 
   <div class="section">
-
-    <h2>Apa Itu Futsal?</h2>
-
-    <div class="info-box">
+    <h2 class="reveal">Apa Itu Futsal?</h2>
+    <div class="info-box reveal">
       <strong>Futsal</strong> adalah olahraga sepak bola mini yang dimainkan di dalam ruangan.
-      Setiap tim terdiri dari <mark class="highlight">5 pemain</mark> termasuk kiper.
-      Namanya berasal dari bahasa Spanyol/Portugis: <u>fútbol sala</u> yang artinya "sepak bola ruangan".
+      Setiap tim terdiri dari <span class="highlight">5 pemain</span> termasuk kiper.
+      Namanya berasal dari bahasa Spanyol/Portugis: <u>f&uacute;tbol sala</u> yang artinya "sepak bola ruangan".
     </div>
-
-    <div class="info-box">
+    <div class="info-box reveal">
       Bolanya lebih kecil dan lebih berat dari bola sepak biasa, jadi butuh kontrol yang lebih teliti.
       Durasi pertandingan cuma <strong>2 x 20 menit</strong> waktu bersih, tapi capeknya tetap sama haha.
     </div>
+    <h2 class="reveal">Kenapa Suka Futsal?</h2>
+    <div class="card-grid reveal-stagger">
+      <div class="card"><div class="card-badge-num">01</div><h3>Gerak Terus</h3><p>Lapangan kecil bikin permainan jadi cepat dan intens. Susah buat santai-santai.</p></div>
+      <div class="card"><div class="card-badge-num">02</div><h3>Butuh Mikir</h3><p>Tiap gerakan perlu koordinasi sama rekan. Melatih pengambilan keputusan cepat.</p></div>
+      <div class="card"><div class="card-badge-num">03</div><h3>Teamwork</h3><p>Cuma 5 orang, peran tiap pemain penting banget. Kalau kompak, hasilnya beda.</p></div>
+      <div class="card"><div class="card-badge-num">04</div><h3>Olahraga Efisien</h3><p>1 jam futsal bisa bakar sampai <span class="highlight">600 kalori</span>. Lebih seru dari joging sendirian.</p></div>
+    </div>
+    <h2 class="reveal">Futsal vs Sepak Bola</h2>
+    <p class="form-intro reveal">Ini bedanya, biar ga ketuker:</p>
+    <table class="reveal">
+      <thead><tr><th>Aspek</th><th>Futsal</th><th>Sepak Bola</th></tr></thead>
+      <tbody>
+        <tr><td>Jumlah Pemain</td><td><strong>5 orang</strong></td><td>11 orang</td></tr>
+        <tr><td>Ukuran Lapangan</td><td>25&ndash;42 m &times; 16&ndash;25 m</td><td>90&ndash;120 m &times; 45&ndash;90 m</td></tr>
+        <tr><td>Tempat Main</td><td>Indoor / outdoor</td><td>Outdoor (biasanya)</td></tr>
+        <tr><td>Durasi</td><td>2 &times; 20 menit (waktu bersih)</td><td>2 &times; 45 menit</td></tr>
+        <tr><td>Ukuran Bola</td><td>Nomor 4 (lebih berat)</td><td>Nomor 5</td></tr>
+        <tr><td>Throw-in</td><td>Tendangan ke dalam</td><td>Lemparan tangan</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <h2>Kenapa Suka Futsal?</h2>
+  <!-- TEKNIK DASAR -->
+  <hr class="section-divider">
+  <span class="section-anchor" id="teknik"></span>
+  <div class="section">
+  <!-- TEKNIK DASAR -->
+  <hr class="section-divider">
+  <span class="section-anchor" id="teknik"></span>
+  <div class="section">
+    <div class="hero-badge" style="display:inline-flex;margin-bottom:16px;">Skill &amp; Teknik</div>
+    <h2 class="reveal" style="margin-top:0;">Teknik Dasar<br><span class="gradient-text">Futsal</span></h2>
+    <p class="form-intro reveal">Skill yang perlu dikuasai sebelum turun ke lapangan. Fokus dulu ke kualitas, baru ngomongin taktik.</p>
+    <div class="info-box reveal">
+      Menguasai teknik dasar itu penting banget sebelum ngomongin taktik atau gaya-gayan.
+      Fokus dulu ke <span class="highlight">kualitas sentuhan bola</span>, baru pikirin yang lain.
+    </div>
+    <div class="teknik-list reveal-stagger">
+      <div class="teknik-item"><div class="teknik-number">1</div><div class="teknik-content"><h3>Passing</h3><p>Operan adalah yang paling sering dipakai di futsal. Pake bagian <u>dalam kaki</u> buat operan pendek yang akurat. Karena lapangannya sempit, passing cepat dan tepat jadi senjata utama.</p></div></div>
+      <div class="teknik-item"><div class="teknik-number">2</div><div class="teknik-content"><h3>Kontrol Bola</h3><p>Di futsal sering pakai telapak kaki (<em>sole</em>) buat ngehentiin bola. Kontrol yang bersih bikin bola susah direbut lawan, <b>kontrol buruk = bola gampang hilang</b>.</p></div></div>
+      <div class="teknik-item"><div class="teknik-number">3</div><div class="teknik-content"><h3>Dribbling</h3><p>Dribbling di futsal itu pendek-pendek aja, jangan terlalu jauh dari badan. Jangan kelamaan nggiring karena ruangnya sempit and lawan bisa langsung nutup.</p></div></div>
+      <div class="teknik-item"><div class="teknik-number">4</div><div class="teknik-content"><h3>Shooting</h3><p>Tembakan harus <em>akurat</em> dan kencang. Pake punggung kaki buat tembakan keras, atau sisi dalam kaki kalau mau lebih akurat. Jarak ke gawang relatif dekat di futsal.</p></div></div>
+      <div class="teknik-item"><div class="teknik-number">5</div><div class="teknik-content"><h3>Defending</h3><p>Bertahan itu tugas semua pemain, bukan cuma pemain belakang. Posisi badan rendah, jangan asal tekel, dan selalu bayangin pergerakan lawan.</p></div></div>
+      <div class="teknik-item"><div class="teknik-number">6</div><div class="teknik-content"><h3>Set Piece / Bola Mati</h3><p>Tendangan sudut atau free kick di futsal bisa langsung berbahaya karena lapangan kecil. Latih <u>variasi tendangan bebas</u> supaya lawan ga bisa tebak arahnya.</p></div></div>
+    </div>
+    <h2 class="reveal">Posisi Pemain</h2>
+    <p class="form-intro reveal">Tiap posisi punya peran berbeda dalam 1 tim futsal.</p>
+    <table class="reveal">
+      <thead><tr><th>Posisi</th><th>Tugas</th><th>Skill Utama</th><th>Catatan</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kiper (GK)</strong></td><td>Jaga gawang, bagi bola</td><td>Refleks, distribusi</td><td>Ikut menyerang saat power play</td></tr>
+        <tr><td><strong>Anchor</strong></td><td>Atur tempo, cover defense</td><td>Passing, visi lapangan</td><td>Otaknya tim di lapangan</td></tr>
+        <tr><td><strong>Flank (kiri/kanan)</strong></td><td>Serang dari sayap</td><td>Dribbling, kecepatan</td><td>Harus punya stamina tinggi</td></tr>
+        <tr><td><strong>Pivot</strong></td><td>Cetak gol, buka ruang</td><td><span class="highlight">Shooting</span>, kontrol badan</td><td>Posisi paling dekat gawang musuh</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="card-grid">
-      <div class="card">
-        <div class="icon">🏃</div>
-        <h3>Gerak Terus</h3>
-        <p>Lapangan kecil bikin permainan jadi cepat dan intens. Susah buat santai-santai.</p>
+  <!-- JADWAL & HASIL -->
+  <hr class="section-divider">
+  <span class="section-anchor" id="jadwal"></span>
+  <div class="section">
+    <div class="hero-badge" style="display:inline-flex;margin-bottom:16px;">Jadwal &amp; Statistik</div>
+    <h2 class="reveal" style="margin-top:0;">Jadwal Latihan<br><span class="gradient-text">&amp; Hasil Tanding</span></h2>
+    <p class="form-intro reveal">Jadwal rutin mingguan dan rekap hasil pertandingan tim VOLTA. Wajib datang tepat waktu, jangan sering izin!</p>
+    <h2 class="reveal">Jadwal Latihan Rutin</h2>
+    <div class="info-box reveal">
+      Latihan rutin tiap minggu buat menjaga kondisi dan kekompakan tim.
+      <span class="highlight">Wajib datang tepat waktu</span>, jangan sering-sering izin kalau ga urgent.
+    </div>
+    <table class="reveal">
+      <thead><tr><th>Hari</th><th>Waktu</th><th>Tempat</th><th>Materi</th><th>Peserta</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Selasa</strong></td><td>19.00 &ndash; 21.00</td><td>GOR Futsal Merdeka</td><td>Passing &amp; kontrol bola</td><td>Semua anggota</td></tr>
+        <tr><td><strong>Kamis</strong></td><td>19.00 &ndash; 21.00</td><td>GOR Futsal Merdeka</td><td>Taktik &amp; set piece</td><td>Semua anggota</td></tr>
+        <tr><td><strong>Sabtu</strong></td><td>08.00 &ndash; 10.00</td><td>Arena Futsal Stadiun</td><td>Scrimmage / uji coba</td><td>Tim inti + cadangan</td></tr>
+        <tr><td><strong>Minggu</strong></td><td>16.00 &ndash; 17.30</td><td>Lapangan Komunitas</td><td>Fisik &amp; stamina</td><td>Opsional</td></tr>
+      </tbody>
+    </table>
+    <h2 class="reveal">Statistik Tim</h2>
+    <div class="card-grid reveal-stagger">
+      <div class="card" style="text-align:center;"><p class="stat-number" style="color:#34d399;">4</p><p>Menang</p></div>
+      <div class="card" style="text-align:center;"><p class="stat-number" style="color:#fbbf24;">2</p><p>Seri</p></div>
+      <div class="card" style="text-align:center;"><p class="stat-number" style="color:#f87171;">1</p><p>Kalah</p></div>
+      <div class="card" style="text-align:center;"><p class="stat-number" style="color:var(--blue-light);">28</p><p>Total Gol</p></div>
+    </div>
+    <h2 class="reveal">Hasil Pertandingan</h2>
+    <p class="form-intro reveal">Rekap hasil tanding semester ini.</p>
+    <table class="reveal">
+      <thead><tr><th>Tanggal</th><th>Lawan</th><th>Skor</th><th>Tempat</th><th>Hasil</th></tr></thead>
+      <tbody>
+        <tr><td>10 Feb 2025</td><td>Tim Rajawali FC</td><td><strong>5 - 3</strong><br><span style="font-size:0.8rem;color:var(--text3);">&bull; Dimas (2), Reza, Jefri, Kevin</span></td><td>GOR Futsal Merdeka</td><td><span class="badge badge-menang">Menang</span></td></tr>
+        <tr><td>22 Feb 2025</td><td>Garuda Muda</td><td><strong>2 - 2</strong><br><span style="font-size:0.8rem;color:var(--text3);">&bull; Witan, Evan</span></td><td>Arena Futsal Stadiun</td><td><span class="badge badge-seri">Seri</span></td></tr>
+        <tr><td>8 Mar 2025</td><td>Bintang Timur FC</td><td><strong>4 - 1</strong><br><span style="font-size:0.8rem;color:var(--text3);">&bull; Egy (2), Arhan, Ramadhan</span></td><td>GOR Futsal Merdeka</td><td><span class="badge badge-menang">Menang</span></td></tr>
+        <tr><td>21 Mar 2025</td><td>Meteor United</td><td><strong>1 - 3</strong><br><span style="font-size:0.8rem;color:var(--text3);">&bull; Saddil</span></td><td>Lap. Komunitas</td><td><span class="badge badge-kalah">Kalah</span></td></tr>
+        <tr><td>5 Apr 2025</td><td>Cobra Futsal Club</td><td><strong>6 - 2</strong><br><span style="font-size:0.8rem;color:var(--text3);">&bull; Dimas Drajad (3), Jefri (2), Iko</span></td><td>GOR Futsal Merdeka</td><td><span class="badge badge-menang">Menang</span></td></tr>
+        <tr><td>19 Apr 2025</td><td>Phoenix FC</td><td><strong>3 - 3</strong><br><span style="font-size:0.8rem;color:var(--text3);">&bull; Angga, Rio, Kevin</span></td><td>Arena Futsal Stadiun</td><td><span class="badge badge-seri">Seri</span></td></tr>
+        <tr><td>3 Mei 2025</td><td>Elang Sakti</td><td><strong>7 - 2</strong><br><span style="font-size:0.8rem;color:var(--text3);">&bull; Ramadhan (3), Witan (2), Egy, Asnawi</span></td><td>GOR Futsal Merdeka</td><td><span class="badge badge-menang">Menang</span></td></tr>
+      </tbody>
+    </table>
+    <h2 class="reveal">Jadwal ke Depan</h2>
+    <p class="form-intro reveal">Pertandingan yang sudah terjadwal.</p>
+    <table class="reveal">
+      <thead><tr><th>Tanggal</th><th>Lawan</th><th>Tempat</th><th>Keterangan</th></tr></thead>
+      <tbody>
+        <tr><td><strong>21 Jun 2025</strong></td><td>Tornado FC</td><td>GOR Futsal Merdeka</td><td><em>Liga Komunitas &mdash; Semifinal</em></td></tr>
+        <tr><td><strong>28 Jun 2025</strong></td><td>TBD</td><td>Arena Futsal Stadiun</td><td><em>Final (kalau lolos semifinal)</em></td></tr>
+      </tbody>
+    </table>
+    <div class="info-box reveal" style="margin-top:20px;">
+      <strong>Pengumuman:</strong> Semua anggota wajib hadir pas semifinal 21 Juni.
+      Bawa kostum lengkap dan sepatu futsal. <strong>Semangat!</strong>
+    </div>
+  </div>
+
+  <!-- TIM & GALERI (GABUNGAN) -->
+  <hr class="section-divider">
+  <span class="section-anchor" id="tim"></span>
+  <div class="section">
+    <div class="hero-badge" style="display:inline-flex;margin-bottom:16px;">Tim &amp; Dokumentasi</div>
+    <h2 class="reveal" style="margin-top:0;">Skuad Tim &amp;<br><span class="gradient-text">Galeri VOLTA</span></h2>
+    <p class="form-intro reveal">Daftar pemain resmi dan dokumentasi momen terbaik tim VOLTA FC.</p>
+
+    <div class="tab-nav reveal">
+      <button class="tab-btn active" id="tab-skuad" onclick="switchTab('skuad')">Skuad Tim</button>
+      <button class="tab-btn" id="tab-galeri" onclick="switchTab('galeri')">Galeri Foto</button>
+    </div>
+
+    <!-- SKUAD -->
+    <div class="tab-panel active" id="panel-skuad">
+      <div class="squad-section reveal">
+        <h3 class="squad-title"><span>U-13</span> Tim Junior</h3>
+        <div class="player-list reveal-stagger">
+          <div class="player-card"><div class="player-num">1</div><div class="player-info"><h4>Budi Santoso</h4><p>Kiper (GK)</p></div></div>
+          <div class="player-card"><div class="player-num">2</div><div class="player-info"><h4>Candra Bima</h4><p>Kiper (GK)</p></div></div>
+          <div class="player-card"><div class="player-num">3</div><div class="player-info"><h4>Andi Saputra</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">4</div><div class="player-info"><h4>Arya Wiguna</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">5</div><div class="player-info"><h4>Fikri Haikal</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">6</div><div class="player-info"><h4>Kevin Sanjaya</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">7</div><div class="player-info"><h4>Dika Pratama</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">8</div><div class="player-info"><h4>Bayu Aji</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">9</div><div class="player-info"><h4>Eka Ramdani</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">10</div><div class="player-info"><h4>Gilang Dirga</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">11</div><div class="player-info"><h4>Irfan Hakim</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">12</div><div class="player-info"><h4>Rizky Febrian</h4><p>Pivot</p></div></div>
+          <div class="player-card"><div class="player-num">13</div><div class="player-info"><h4>Doni Tata</h4><p>Pivot</p></div></div>
+          <div class="player-card"><div class="player-num">14</div><div class="player-info"><h4>Hadi Gunawan</h4><p>Pivot</p></div></div>
+        </div>
       </div>
-      <div class="card">
-        <div class="icon">🧠</div>
-        <h3>Butuh Mikir</h3>
-        <p>Tiap gerakan perlu koordinasi sama rekan. Melatih pengambilan keputusan cepat.</p>
+      <div class="squad-section reveal">
+        <h3 class="squad-title"><span>U-16</span> Tim Remaja</h3>
+        <div class="player-list reveal-stagger">
+          <div class="player-card"><div class="player-num">1</div><div class="player-info"><h4>M. Farrel</h4><p>Kiper (GK)</p></div></div>
+          <div class="player-card"><div class="player-num">2</div><div class="player-info"><h4>Rio Dewanto</h4><p>Kiper (GK)</p></div></div>
+          <div class="player-card"><div class="player-num">3</div><div class="player-info"><h4>Dimas Anggara</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">4</div><div class="player-info"><h4>Angga Yunanda</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">5</div><div class="player-info"><h4>Iko Uwais</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">6</div><div class="player-info"><h4>Reza Rahadian</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">7</div><div class="player-info"><h4>Iqbaal Ramadhan</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">8</div><div class="player-info"><h4>Adipati Dolken</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">9</div><div class="player-info"><h4>Vino G. Bastian</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">10</div><div class="player-info"><h4>Joe Taslim</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">11</div><div class="player-info"><h4>Arifin Putra</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">12</div><div class="player-info"><h4>Jefri Nichol</h4><p>Pivot</p></div></div>
+          <div class="player-card"><div class="player-num">13</div><div class="player-info"><h4>Chicco Jerikho</h4><p>Pivot</p></div></div>
+          <div class="player-card"><div class="player-num">14</div><div class="player-info"><h4>Yayan Ruhian</h4><p>Pivot</p></div></div>
+        </div>
       </div>
-      <div class="card">
-        <div class="icon">🤝</div>
-        <h3>Teamwork</h3>
-        <p>Cuma 5 orang, peran tiap pemain penting banget. Kalau kompak, hasilnya beda.</p>
-      </div>
-      <div class="card">
-        <div class="icon">💪</div>
-        <h3>Olahraga Efisien</h3>
-        <p>1 jam futsal bisa bakar sampai <u>600 kalori</u>. Lebih seru dari joging sendirian.</p>
+      <div class="squad-section reveal">
+        <h3 class="squad-title"><span>U-20</span> Tim Utama</h3>
+        <div class="player-list reveal-stagger">
+          <div class="player-card"><div class="player-num">1</div><div class="player-info"><h4>Nadeo Argawinata</h4><p>Kiper (GK)</p></div></div>
+          <div class="player-card"><div class="player-num">2</div><div class="player-info"><h4>Syahrul Trisna</h4><p>Kiper (GK)</p></div></div>
+          <div class="player-card"><div class="player-num">3</div><div class="player-info"><h4>Evan Dimas</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">4</div><div class="player-info"><h4>Asnawi M.</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">5</div><div class="player-info"><h4>Fachruddin A.</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">6</div><div class="player-info"><h4>Rizky Ridho</h4><p>Anchor</p></div></div>
+          <div class="player-card"><div class="player-num">7</div><div class="player-info"><h4>Egy Maulana Vikri</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">8</div><div class="player-info"><h4>Witan Sulaeman</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">9</div><div class="player-info"><h4>Pratama Arhan</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">10</div><div class="player-info"><h4>Ricky Kambuaya</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">11</div><div class="player-info"><h4>Saddil Ramdani</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">12</div><div class="player-info"><h4>Marc Klok</h4><p>Flank</p></div></div>
+          <div class="player-card"><div class="player-num">13</div><div class="player-info"><h4>Dimas Drajad</h4><p>Pivot</p></div></div>
+          <div class="player-card"><div class="player-num">14</div><div class="player-info"><h4>Ramadhan Sananta</h4><p>Pivot</p></div></div>
+        </div>
       </div>
     </div>
 
-    <h2>Futsal vs Sepak Bola</h2>
-    <p style="color: #666; margin-bottom: 10px; font-size: 0.9rem;">Ini bedanya, biar ga ketuker:</p>
+    <!-- GALERI -->
+    <div class="tab-panel" id="panel-galeri">
+      <div class="info-box reveal">
+        Futsal bukan cuma soal menang kalah, tapi juga soal memori dan kebersamaan.
+        Berikut beberapa dokumentasi aksi VOLTA FC musim ini.
+      </div>
+      <div class="gallery-grid reveal-stagger">
+        <div class="gallery-item"><img src="img/galeri_1.jpg" alt="Skuad VOLTA FC" /><div class="gallery-overlay"><h3>Skuad VOLTA FC</h3><p>Persiapan Latihan</p></div></div>
+        <div class="gallery-item"><img src="img/galeri_2.jpg" alt="Kebersamaan Tim" /><div class="gallery-overlay"><h3>Kebersamaan Tim</h3><p>Foto Bersama Anggota</p></div></div>
+        <div class="gallery-item"><img src="img/galeri_3.jpg" alt="Kekompakan Lapangan" /><div class="gallery-overlay"><h3>Kekompakan Lapangan</h3><p>Fokus &amp; Konsistensi</p></div></div>
+        <div class="gallery-item"><img src="img/galeri_4.jpg" alt="Momen Pertandingan" /><div class="gallery-overlay"><h3>Momen Pertandingan</h3><p>Solidaritas di Lapangan</p></div></div>
+      </div>
+    </div>
+  </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Aspek</th>
-          <th>Futsal</th>
-          <th>Sepak Bola</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Jumlah Pemain</td>
-          <td><strong>5 orang</strong></td>
-          <td>11 orang</td>
-        </tr>
-        <tr>
-          <td>Ukuran Lapangan</td>
-          <td>25-42 m x 16-25 m</td>
-          <td>90-120 m x 45-90 m</td>
-        </tr>
-        <tr>
-          <td>Tempat Main</td>
-          <td>Indoor / outdoor</td>
-          <td>Outdoor (biasanya)</td>
-        </tr>
-        <tr>
-          <td>Durasi</td>
-          <td>2 x 20 menit (waktu bersih)</td>
-          <td>2 x 45 menit</td>
-        </tr>
-        <tr>
-          <td>Ukuran Bola</td>
-          <td>Nomor 4 (lebih berat)</td>
-          <td>Nomor 5</td>
-        </tr>
-        <tr>
-          <td>Throw-in</td>
-          <td>Tendangan ke dalam</td>
-          <td>Lemparan tangan</td>
-        </tr>
-      </tbody>
-    </table>
-
+  <!-- GABUNG TIM -->
+  <hr class="section-divider">
+  <span class="section-anchor" id="gabung"></span>
+  <div class="section">
+    <div class="hero-badge" style="display:inline-flex;margin-bottom:16px;">Seleksi Tim VOLTA</div>
+    <h2 class="reveal" style="margin-top:0;">Seleksi Pemain<br><span class="gradient-text">Musim Baru</span></h2>
+    <p class="form-intro reveal">Silakan lengkapi formulir pendaftaran berikut. Proses seleksi terbuka untuk berbagai posisi dengan kriteria dedikasi dan kedisiplinan tinggi.</p>
+    <h2 class="reveal">Formulir Pendaftaran</h2>
+    <div class="info-box reveal">
+      Pendaftaran seleksi tim untuk <span class="highlight">musim kompetisi mendatang</span> telah dibuka.
+      Kami mencari individu yang memiliki komitmen, disiplin dalam berlatih, serta semangat kompetitif yang tinggi.
+    </div>
+    <form id="form-daftar" class="form-daftar reveal" novalidate>
+      <div class="form-group">
+        <label for="nama">Nama Lengkap <span class="required-mark">*</span></label>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" minlength="3" maxlength="60" />
+        <span class="error-msg" id="error-nama"></span>
+      </div>
+      <div class="form-group">
+        <label for="noHp">Nomor WhatsApp <span class="required-mark">*</span></label>
+        <input type="tel" id="noHp" name="noHp" placeholder="Contoh: 081234567890" pattern="^08[0-9]{8,11}$" />
+        <span class="error-msg" id="error-noHp"></span>
+      </div>
+      <div class="form-group">
+        <label for="kategori">Kategori Umur <span class="required-mark">*</span></label>
+        <select id="kategori" name="kategori">
+          <option value="">Pilih kategori umur...</option>
+          <option value="U-13 (Junior)">U-13 (Junior)</option>
+          <option value="U-16 (Remaja)">U-16 (Remaja)</option>
+          <option value="U-20 (Utama)">U-20 (Utama)</option>
+        </select>
+        <span class="error-msg" id="error-kategori"></span>
+      </div>
+      <div class="form-group">
+        <label for="posisi">Posisi Bermain <span class="required-mark">*</span></label>
+        <select id="posisi" name="posisi">
+          <option value="">Pilih posisi bermain...</option>
+          <option value="Kiper (GK)">Kiper (GK)</option>
+          <option value="Anchor">Anchor</option>
+          <option value="Flank Kiri">Flank Kiri</option>
+          <option value="Flank Kanan">Flank Kanan</option>
+          <option value="Pivot">Pivot</option>
+          <option value="Fleksibel">Fleksibel (All-round)</option>
+        </select>
+        <span class="error-msg" id="error-posisi"></span>
+      </div>
+      <div class="form-group">
+        <label for="pengalaman">Pengalaman Bermain <span class="required-mark">*</span></label>
+        <input type="text" id="pengalaman" name="pengalaman" placeholder="Sebutkan klub atau liga yang pernah Anda ikuti (contoh: Klub ABC / Belum pernah)" />
+        <span class="error-msg" id="error-pengalaman"></span>
+      </div>
+      <div class="form-group">
+        <label for="motivasi">Motivasi Bergabung <span class="required-mark">*</span></label>
+        <textarea id="motivasi" name="motivasi" rows="4" placeholder="Jelaskan alasan dan motivasi Anda untuk bergabung dengan tim VOLTA..." minlength="10" maxlength="400"></textarea>
+        <span class="error-msg" id="error-motivasi"></span>
+      </div>
+      <div class="form-actions">
+        <button type="submit" id="btn-submit" class="btn-form">Kirim Pendaftaran</button>
+        <button type="button" id="btn-reset" class="btn-form btn-form-secondary">Atur Ulang</button>
+      </div>
+    </form>
+    <div id="sukses-msg" class="sukses-box" style="display:none;">
+      <strong>Pendaftaran Berhasil!</strong><br>
+      Data Anda telah kami terima. Tim kami akan segera menghubungi Anda melalui WhatsApp untuk informasi jadwal seleksi.
+      Silakan cek <a href="#jadwal">Jadwal &amp; Hasil</a> untuk informasi terkini.
+    </div>
+    <div id="data-tersimpan-wrapper" style="display:none;">
+      <h2>Data Pendaftaran Anda</h2>
+      <p class="form-intro">Data pendaftaran ini tersimpan secara lokal pada peramban Anda.</p>
+      <div class="info-box" id="data-tersimpan-isi"></div>
+      <button type="button" id="btn-hapus" class="btn-form btn-form-danger" style="margin-top:12px;">Hapus Data Pendaftaran</button>
+    </div>
   </div>
 
   <footer>
-    <p>Dibuat oleh Muhammad Farrel &mdash; Web Client Development UTS 2025</p>
+    <p><strong>VOLTA</strong> &mdash; Dibuat oleh <strong>Muhammad Farrel</strong> &middot; Web Client Development UTS 2025</p>
   </footer>
 
+  <script>
+    // SCROLL REVEAL
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+    // ACTIVE NAV ON SCROLL
+    const sections = ['beranda','teknik','jadwal','tim','gabung'];
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) current = id;
+      });
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+      });
+    });
+
+    // TAB SWITCHER
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      document.getElementById('panel-' + tab).classList.add('active');
+      document.querySelectorAll('#panel-' + tab + ' .reveal, #panel-' + tab + ' .reveal-stagger')
+        .forEach(el => { if (!el.classList.contains('visible')) observer.observe(el); });
+    }
+
+    // FORM LOGIC
+    const STORAGE_KEY = 'volta_daftar';
+    const form = document.getElementById('form-daftar');
+    const suksesMsg = document.getElementById('sukses-msg');
+    const dataWrapper = document.getElementById('data-tersimpan-wrapper');
+    const dataIsi = document.getElementById('data-tersimpan-isi');
+    const btnReset = document.getElementById('btn-reset');
+    const btnHapus = document.getElementById('btn-hapus');
+
+    function muatDataTersimpan() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      document.getElementById('nama').value = data.nama || '';
+      document.getElementById('noHp').value = data.noHp || '';
+      document.getElementById('kategori').value = data.kategori || '';
+      document.getElementById('posisi').value = data.posisi || '';
+      document.getElementById('pengalaman').value = data.pengalaman || '';
+      document.getElementById('motivasi').value = data.motivasi || '';
+      tampilkanDataTersimpan(data);
+    }
+    function tampilkanDataTersimpan(data) {
+      dataWrapper.style.display = 'block';
+      dataIsi.innerHTML =
+        '<strong>Nama:</strong> ' + data.nama + '<br>' +
+        '<strong>No. HP:</strong> ' + data.noHp + '<br>' +
+        '<strong>Kategori Umur:</strong> ' + data.kategori + '<br>' +
+        '<strong>Posisi:</strong> ' + data.posisi + '<br>' +
+        '<strong>Pengalaman:</strong> ' + data.pengalaman + '<br>' +
+        '<strong>Motivasi:</strong> ' + data.motivasi + '<br>' +
+        '<strong>Dikirim:</strong> ' + (data.waktu || '-');
+    }
+    function clearErrors() {
+      document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+      document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(el => el.classList.remove('input-error'));
+    }
+    function setError(id, pesan) {
+      document.getElementById('error-' + id).textContent = pesan;
+      document.getElementById(id).classList.add('input-error');
+    }
+    function validasiForm() {
+      clearErrors();
+      let valid = true;
+      const nama = document.getElementById('nama').value.trim();
+      const noHp = document.getElementById('noHp').value.trim();
+      const kategori = document.getElementById('kategori').value;
+      const posisi = document.getElementById('posisi').value;
+      const pengalaman = document.getElementById('pengalaman').value.trim();
+      const motivasi = document.getElementById('motivasi').value.trim();
+      if (nama.length < 3) { setError('nama', 'Nama harus terdiri dari minimal 3 karakter.'); valid = false; }
+      if (!/^08[0-9]{8,11}$/.test(noHp)) { setError('noHp', 'Format nomor WhatsApp tidak valid. Harap gunakan format awalan 08.'); valid = false; }
+      if (!kategori) { setError('kategori', 'Harap pilih kategori umur seleksi Anda.'); valid = false; }
+      if (!posisi) { setError('posisi', 'Harap pilih posisi bermain Anda.'); valid = false; }
+      if (!pengalaman) { setError('pengalaman', 'Harap isi pengalaman bermain Anda.'); valid = false; }
+      if (motivasi.length < 10) { setError('motivasi', 'Motivasi harus diisi minimal 10 karakter.'); valid = false; }
+      return valid;
+    }
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validasiForm()) return;
+      const data = {
+        nama: document.getElementById('nama').value.trim(),
+        noHp: document.getElementById('noHp').value.trim(),
+        kategori: document.getElementById('kategori').value,
+        posisi: document.getElementById('posisi').value,
+        pengalaman: document.getElementById('pengalaman').value.trim(),
+        motivasi: document.getElementById('motivasi').value.trim(),
+        waktu: new Date().toLocaleString('id-ID')
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      suksesMsg.style.display = 'block';
+      suksesMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      tampilkanDataTersimpan(data);
+    });
+    btnReset.addEventListener('click', function() { clearErrors(); form.reset(); suksesMsg.style.display = 'none'; });
+    btnHapus.addEventListener('click', function() {
+      localStorage.removeItem(STORAGE_KEY);
+      dataWrapper.style.display = 'none';
+      suksesMsg.style.display = 'none';
+      form.reset();
+      clearErrors();
+    });
+    muatDataTersimpan();
+  </script>
 </body>
 </html>

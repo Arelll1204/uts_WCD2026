@@ -3,43 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FutsalKu - Gabung Tim</title>
+  <title>VOLTA — Gabung Tim</title>
+  <meta name="description" content="Gabung tim futsal VOLTA! Isi form pendaftaran — semua posisi boleh, skill belum tinggi juga gapapa.">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-brand">⚽ FutsalKu</a>
+    <a href="index.html" class="nav-brand">⚡ VOLTA</a>
     <ul class="nav-links">
       <li><a href="index.html">Beranda</a></li>
       <li><a href="teknik.html">Teknik Dasar</a></li>
-      <li><a href="jadwal.html">Jadwal &amp; Hasil</a></li>
+      <li><a href="jadwal.html">Jadwal & Hasil</a></li>
+      <li><a href="skuad.html">Skuad Tim</a></li>
+      <li><a href="galeri.html">Galeri</a></li>
       <li><a href="daftar.html" class="active">Gabung Tim</a></li>
     </ul>
   </nav>
 
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🚀 Seleksi Tim VOLTA</div>
+      <h1>Seleksi Pemain<br><span class="gradient-text">Musim Baru</span></h1>
+      <p>Silakan lengkapi formulir pendaftaran berikut. Proses seleksi terbuka untuk berbagai posisi dengan kriteria dedikasi dan kedisiplinan tinggi.</p>
+    </div>
+  </div>
+
   <div class="section">
 
-    <h2>Mau Ikut Main? Daftar Dulu</h2>
-    <p style="color: #666; font-size: 0.9rem; margin-top: -8px; margin-bottom: 14px;">
-      Isi form ini, nanti kita reach out. Ga ribet kok.
-    </p>
+    <h2 class="reveal">Formulir Pendaftaran</h2>
 
-    <div class="info-box">
-      Lagi buka slot buat <mark class="highlight">musim baru</mark> nih.
-      Semua posisi boleh, skill belum tinggi juga gapapa — yang penting <strong>rajin latihan dan ga sering izin</strong>.
+    <div class="info-box reveal">
+      Pendaftaran seleksi tim untuk <span class="highlight">musim kompetisi mendatang</span> telah dibuka.
+      Kami mencari individu yang memiliki komitmen, disiplin dalam berlatih, serta semangat kompetitif yang tinggi.
     </div>
 
     <!-- FORM PENDAFTARAN -->
-    <form id="form-daftar" class="form-daftar" novalidate>
+    <form id="form-daftar" class="form-daftar reveal" novalidate>
 
       <div class="form-group">
-        <label for="nama">Nama kamu <span class="required-mark">*</span></label>
+        <label for="nama">Nama Lengkap <span class="required-mark">*</span></label>
         <input
           type="text"
           id="nama"
           name="nama"
-          placeholder="nama lengkap, bukan nickname ya"
+          placeholder="Masukkan nama lengkap Anda"
           minlength="3"
           maxlength="60"
         />
@@ -47,51 +55,49 @@
       </div>
 
       <div class="form-group">
-        <label for="noHp">No. HP / WA <span class="required-mark">*</span></label>
+        <label for="noHp">Nomor WhatsApp <span class="required-mark">*</span></label>
         <input
           type="tel"
           id="noHp"
           name="noHp"
-          placeholder="08xxxxxxxxxx"
+          placeholder="Contoh: 081234567890"
           pattern="^08[0-9]{8,11}$"
         />
         <span class="error-msg" id="error-noHp"></span>
       </div>
 
       <div class="form-group">
-        <label for="posisi">Posisi yang mau dicoba <span class="required-mark">*</span></label>
+        <label for="posisi">Posisi Bermain <span class="required-mark">*</span></label>
         <select id="posisi" name="posisi">
-          <option value="">pilih posisi...</option>
+          <option value="">Pilih posisi bermain...</option>
           <option value="Kiper (GK)">Kiper (GK)</option>
           <option value="Anchor">Anchor</option>
           <option value="Flank Kiri">Flank Kiri</option>
           <option value="Flank Kanan">Flank Kanan</option>
           <option value="Pivot">Pivot</option>
-          <option value="Fleksibel">Fleksibel / belum tau</option>
+          <option value="Fleksibel">Fleksibel (All-round)</option>
         </select>
         <span class="error-msg" id="error-posisi"></span>
       </div>
 
       <div class="form-group">
-        <label for="pengalaman">Seberapa sering main futsal? <span class="required-mark">*</span></label>
-        <select id="pengalaman" name="pengalaman">
-          <option value="">pilih salah satu...</option>
-          <option value="Pemula (belum pernah)">Baru mau nyoba, belum pernah sama sekali</option>
-          <option value="Casual (main santai)">Pernah main, tapi casual aja</option>
-          <option value="1-2 tahun">Udah main 1–2 tahun</option>
-          <option value="3-5 tahun">3–5 tahun, lumayan lah</option>
-          <option value="Lebih dari 5 tahun">Lebih dari 5 tahun, udah veteran</option>
-        </select>
+        <label for="pengalaman">Pengalaman Bermain <span class="required-mark">*</span></label>
+        <input
+          type="text"
+          id="pengalaman"
+          name="pengalaman"
+          placeholder="Sebutkan klub atau liga yang pernah Anda ikuti (contoh: Klub ABC / Belum pernah)"
+        />
         <span class="error-msg" id="error-pengalaman"></span>
       </div>
 
       <div class="form-group">
-        <label for="motivasi">Kenapa mau gabung? <span class="required-mark">*</span></label>
+        <label for="motivasi">Motivasi Bergabung <span class="required-mark">*</span></label>
         <textarea
           id="motivasi"
           name="motivasi"
           rows="4"
-          placeholder="santai aja, cerita sedikit juga gapapa. misal: pengen olahraga, bosen di kos, etc."
+          placeholder="Jelaskan alasan dan motivasi Anda untuk bergabung dengan tim VOLTA..."
           minlength="10"
           maxlength="400"
         ></textarea>
@@ -99,39 +105,51 @@
       </div>
 
       <div class="form-actions">
-        <button type="submit" id="btn-submit" class="btn-form">Kirim aja 🚀</button>
-        <button type="button" id="btn-reset" class="btn-form btn-form-secondary">Ulangi</button>
+        <button type="submit" id="btn-submit" class="btn-form">Kirim Pendaftaran 🚀</button>
+        <button type="button" id="btn-reset" class="btn-form btn-form-secondary">Atur Ulang</button>
       </div>
 
     </form>
 
     <!-- PESAN SUKSES -->
     <div id="sukses-msg" class="sukses-box" style="display:none;">
-      ✅ <strong>Oke, udah masuk!</strong><br>
-      Ntar kami hubungi via WA. Sambil nunggu, cek jadwal latihan di
-      <a href="jadwal.html">Jadwal &amp; Hasil</a> biar tau kita latihan kapan aja.
+      ✅ <strong>Pendaftaran Berhasil!</strong><br>
+      Data Anda telah kami terima. Tim kami akan segera menghubungi Anda melalui WhatsApp untuk informasi jadwal seleksi.
+      Silakan periksa <a href="jadwal.html">Jadwal & Hasil</a> untuk informasi terkini.
     </div>
 
     <!-- TAMPILAN DATA TERSIMPAN -->
     <div id="data-tersimpan-wrapper" style="display:none;">
-      <h2>Data yang udah kamu kirim</h2>
-      <p style="color:#666; font-size:0.9rem; margin-top:-8px; margin-bottom:12px;">
-        Ini tersimpan di browser kamu, jadi ga hilang walau di-refresh.
+      <h2>Data Pendaftaran Anda</h2>
+      <p class="form-intro">
+        Data pendaftaran ini tersimpan secara lokal pada peramban Anda.
       </p>
       <div class="info-box" id="data-tersimpan-isi"></div>
-      <button type="button" id="btn-hapus" class="btn-form btn-form-danger" style="margin-top:10px;">
-        🗑️ Hapus &amp; mulai ulang
+      <button type="button" id="btn-hapus" class="btn-form btn-form-danger" style="margin-top:12px;">
+        🗑️ Hapus Data Pendaftaran
       </button>
     </div>
 
   </div>
 
   <footer>
-    <p>Dibuat oleh Muhammad Farrel &mdash; Web Client Development UTS 2025</p>
+    <p><strong>VOLTA</strong> &mdash; Dibuat oleh <strong>Muhammad Farrel</strong> · Web Client Development UTS 2025</p>
   </footer>
 
   <script>
-    const STORAGE_KEY = 'futsalku_daftar';
+    // ========== SCROLL REVEAL ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+    // ========== FORM LOGIC ==========
+    const STORAGE_KEY = 'volta_daftar';
 
     const form        = document.getElementById('form-daftar');
     const suksesMsg   = document.getElementById('sukses-msg');
@@ -140,19 +158,15 @@
     const btnReset    = document.getElementById('btn-reset');
     const btnHapus    = document.getElementById('btn-hapus');
 
-    // Muat data dari localStorage waktu halaman dibuka
     function muatDataTersimpan() {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
-
       const data = JSON.parse(raw);
-
       document.getElementById('nama').value       = data.nama       || '';
       document.getElementById('noHp').value       = data.noHp       || '';
       document.getElementById('posisi').value     = data.posisi     || '';
       document.getElementById('pengalaman').value = data.pengalaman || '';
       document.getElementById('motivasi').value   = data.motivasi   || '';
-
       tampilkanDataTersimpan(data);
     }
 
@@ -163,7 +177,8 @@
         '<strong>No. HP:</strong> '     + data.noHp       + '<br>' +
         '<strong>Posisi:</strong> '     + data.posisi     + '<br>' +
         '<strong>Pengalaman:</strong> ' + data.pengalaman + '<br>' +
-        '<strong>Motivasi:</strong> '   + data.motivasi;
+        '<strong>Motivasi:</strong> '   + data.motivasi   + '<br>' +
+        '<strong>Dikirim:</strong> '    + (data.waktu || '-');
     }
 
     function clearErrors() {
@@ -184,31 +199,31 @@
       const nama       = document.getElementById('nama').value.trim();
       const noHp       = document.getElementById('noHp').value.trim();
       const posisi     = document.getElementById('posisi').value;
-      const pengalaman = document.getElementById('pengalaman').value;
+      const pengalaman = document.getElementById('pengalaman').value.trim();
       const motivasi   = document.getElementById('motivasi').value.trim();
 
       if (nama.length < 3) {
-        setError('nama', 'Nama kurang panjang, minimal 3 karakter ya.');
+        setError('nama', 'Nama harus terdiri dari minimal 3 karakter.');
         valid = false;
       }
 
       if (!/^08[0-9]{8,11}$/.test(noHp)) {
-        setError('noHp', 'Format nomor HP salah. Harus diawali 08, contoh: 08123456789');
+        setError('noHp', 'Format nomor WhatsApp tidak valid. Harap gunakan format awalan 08.');
         valid = false;
       }
 
       if (!posisi) {
-        setError('posisi', 'Pilih posisi dulu.');
+        setError('posisi', 'Harap pilih posisi bermain Anda.');
         valid = false;
       }
 
       if (!pengalaman) {
-        setError('pengalaman', 'Pilih salah satu dulu.');
+        setError('pengalaman', 'Harap isi pengalaman bermain Anda.');
         valid = false;
       }
 
       if (motivasi.length < 10) {
-        setError('motivasi', 'Isi dikit dong, minimal 10 karakter.');
+        setError('motivasi', 'Motivasi harus diisi minimal 10 karakter.');
         valid = false;
       }
 
@@ -223,7 +238,7 @@
         nama:       document.getElementById('nama').value.trim(),
         noHp:       document.getElementById('noHp').value.trim(),
         posisi:     document.getElementById('posisi').value,
-        pengalaman: document.getElementById('pengalaman').value,
+        pengalaman: document.getElementById('pengalaman').value.trim(),
         motivasi:   document.getElementById('motivasi').value.trim(),
         waktu:      new Date().toLocaleString('id-ID')
       };
